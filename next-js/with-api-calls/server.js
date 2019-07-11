@@ -24,6 +24,10 @@ app.prepare().then(() => {
     }
   });
 
+  server.get('/', (req, res) => {
+    res.redirect('/people');
+  });
+
   // standard next.js behavior
   server.get('*', (req, res) => {
     return handle(req, res);
