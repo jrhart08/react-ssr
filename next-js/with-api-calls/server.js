@@ -1,13 +1,13 @@
-const express = require('express')
-const next = require('next')
+const express = require('express');
+const next = require('next');
 const { getPerson, getPeople } = require('./personData');
 
 const port = 3000;
 const app = next({ dev: process.env.NODE_ENV !== 'production' });
-const handle = app.getRequestHandler()
+const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
-  const server = express()
+  const server = express();
 
   // api
   server.get('/api/people', (req, res) => {
@@ -24,15 +24,17 @@ app.prepare().then(() => {
     }
   });
 
+  // page server (custom)
   server.get('/', (req, res) => {
     res.redirect('/people');
   });
 
-  // standard next.js behavior
+  // page server (standard next.js behavior)
   server.get('*', (req, res) => {
     return handle(req, res);
   });
 
+  // start server
   server.listen(port, err => {
     if (err) {
       throw err;
