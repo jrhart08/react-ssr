@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import fetch from 'isomorphic-unfetch';
-import Layout from '../components/Layout';
+import Layout from '../../components/Layout';
 
 const Table = styled.table`
   border-color: blue;
@@ -27,8 +27,8 @@ const PersonRow = person => (
     <td>{person.characterClass}</td>
     <td>
       <Link
-        href="/person/[personId]"   // internal route (in `pages`)
-        as={`/person/${person.id}`} // external route (what the browser sees)
+        href="/people/[personId]"   // internal route (in `pages`)
+        as={`/people/${person.id}`} // external route (what the browser sees)
       >
         <a>Details</a>
       </Link>
