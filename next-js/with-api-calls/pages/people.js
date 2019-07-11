@@ -49,7 +49,7 @@ const People = ({ people }) => (
 
 // Next.js checks for this server-side
 People.getInitialProps = async() => {
-  const response = await fetch('http://localhost:5678/api/people');
+  const response = await fetch('http://localhost:3000/api/people');
 
   const people = await response.json();
 

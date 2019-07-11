@@ -29,12 +29,14 @@ const Person = ({ person }) => (
   </Layout>
 );
 
-// Next.js checks for this server-side
+// Next.js checks for this server-side.
+// When clicking on a <Link />, it will call this function again
+// instead of getting a whole new page from the server.
 Person.getInitialProps = async(context) => {
   const { personId } = context.query;
   console.log(`personId: ${personId}`);
 
-  const response = await fetch(`http://localhost:5678/api/people/${personId}`);
+  const response = await fetch(`http://localhost:3000/api/people/${personId}`);
 
   const person = await response.json();
   console.log(`person: ${JSON.stringify(person)}`);
