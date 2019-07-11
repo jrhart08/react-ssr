@@ -23,6 +23,7 @@ function Index(props) {
           <th>First Name</th>
           <th>Last Name</th>
           <th>Class</th>
+          <th />
         </tr>
       </thead>
       {
@@ -32,6 +33,7 @@ function Index(props) {
             <td>{person.firstName}</td>
             <td>{person.lastName}</td>
             <td>{person.characterClass}</td>
+            <td><Link to={`/people/${person.id}`}>Details</Link></td>
           </tr>
         ))
       }
