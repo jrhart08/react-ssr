@@ -1,6 +1,6 @@
 const express = require('express');
 const next = require('next');
-const { getPerson, getPeople } = require('./personData');
+const { getPerson, getPeople } = require('./api/personData');
 
 const port = 3000;
 const app = next({ dev: process.env.NODE_ENV !== 'production' });
