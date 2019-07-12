@@ -1,13 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import Layout from '../../components/Layout';
-
-const Table = styled.table`
-  border-color: blue;
-  font-family: comic sans-serif;
-`;
+import Table from '../../components/Table';
 
 const TableHead = () => (
   <thead>

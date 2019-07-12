@@ -2,24 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import Layout from '../../components/Layout';
-
-const InfoTitle = styled.h3`
-  color: #777;
-  text-transform: uppercase;
-`;
-
-const InfoValue = styled.h2`
-  color: #333;
-`;
-
-const Info = ({ title, children }) => (
-  <>
-    <InfoTitle>{title}</InfoTitle>
-    <InfoValue>{children}</InfoValue>
-  </>
-);
+import Info from '../../components/InfoSection';
 
 const Person = ({ person }) => (
   <Layout>
