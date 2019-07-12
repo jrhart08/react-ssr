@@ -9,6 +9,7 @@ import sharedRootReducer from '../reducers';
 
 const middlewares = [thunk];
 
+// https://redux.js.org/recipes/server-rendering
 export default function configureStore(
   initialState = {},
   rootReducer = sharedRootReducer,
