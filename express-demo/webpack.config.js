@@ -1,39 +1,6 @@
-const path = require('path');
-const ManifestPlugin = require('webpack-manifest-plugin');
+const prod = require('./webpack.config.prod');
+const dev = require('./webpack.config.dev');
 
-const SRC = path.resolve(__dirname, 'src/client');
-const DIST = path.resolve(__dirname, 'dist/public');
+const env = process.env.NODE_ENV;
 
-module.exports = {
-  devtool: 'source-map',
-  
-  entry: path.resolve(SRC, './index.js'),
-  
-  output: {
-    pathinfo: true,
-    path: DIST,
-    filename: 'bundle.[chunkhash].js',
-    chunkFilename: '[name].[chunkhash].js',
-    publicPath: '/public/',
-  },
-  
-  resolve: {
-    extensions: ['.js', '.jsx'],
-  },
-  
-  plugins: [
-    new ManifestPlugin(),
-  ],
-  
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        include: SRC,
-        use: {
-          loader: 'babel-loader',
-        },
-      },
-    ],
-  },
-};
+module.exports = /^prod/.test(env) ? prod : dev;
