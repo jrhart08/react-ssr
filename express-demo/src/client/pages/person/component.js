@@ -26,7 +26,7 @@ const Person = ({ person }) => (
     <Info title="First Name">{person.firstName}</Info>
     <Info title="Last Name">{person.lastName}</Info>
     <Info title="Character Class">{person.characterClass}</Info>
-    <Link href="/people">Back</Link>
+    <Link to="/people">Back</Link>
   </Layout>
 );
 

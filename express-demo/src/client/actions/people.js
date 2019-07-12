@@ -12,6 +12,6 @@ export const getAllPeople = () => dispatch =>
     .then(people => dispatch(peopleFetched(people)));
 
 export const getPerson = personId => dispatch =>
-  fetch(`http://localhost:3000/api/people${personId}`)
+  fetch(`http://localhost:3000/api/people/${personId}`)
     .then(response => response.json())
     .then(person => dispatch(peopleFetched([person])));

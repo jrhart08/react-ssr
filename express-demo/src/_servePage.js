@@ -26,6 +26,8 @@ function buildHtml({ sheet, content, store }) {
   // needs to come after `sheet.collectStyles()`
   const styleTags = sheet.getStyleTags();
 
+  // setting window.__INITIAL_REDUX_STATE__ allows
+  // client to pick up where we left off
   return `
     <html>
       <head>
@@ -47,18 +49,23 @@ function buildHtml({ sheet, content, store }) {
   `;
 }
 
+// server.get('*', () => {...});
 export default (req, res) => {
   const sheet = new ServerStyleSheet();
   const context = {};
 
   const store = configureStore();
 
-  // fetch any data necessary
+  // Fetch any data necessary.
+  // Dispatching through redux so we can pass the
+  // resulting state to the client for initialization.
   const dataRequirements = routes
-    .filter(route => matchPath(req.path, route))
-    .map(route => route.loadData)
-    .filter(loadData => loadData)
-    .map(loadData => store.dispatch(loadData()));
+    // to tuples
+    .map(route => [route.loadData, matchPath(req.path, route.path)])
+    // ensure (a) this is the matching route and (b) there's data to load
+    .filter(([loadData, match]) => loadData && match)
+    // load data
+    .map(([loadData, match]) => store.dispatch(loadData(match)));
 
   Promise.all(dataRequirements).then(() => {
     try {
@@ -72,7 +79,6 @@ export default (req, res) => {
 
       if (context.url) {
         // Somewhere a `<Redirect>` was rendered
-        console.log(`redirecting to ${context.url}`);
         res.redirect(context.url);
       } else {
         res.send(buildHtml({ content, sheet, store }));
