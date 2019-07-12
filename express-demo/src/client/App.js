@@ -1,16 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 import Helmet from 'react-helmet';
-
-const Test = styled.h1`
-  color: #789;
-`;
+import H1 from './components/H1';
 
 export default () => (
   <div>
     <Helmet>
       <title>Hello World Page</title>
     </Helmet>
-    <Test>Hello World!</Test>
+    <H1>Hello World!</H1>
   </div>
 );

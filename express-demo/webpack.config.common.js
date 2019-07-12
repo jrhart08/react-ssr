@@ -2,7 +2,7 @@ const path = require('path');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
 const SRC = path.resolve(__dirname, 'src/client');
-const DIST = path.resolve(__dirname, 'dist/server/public');
+const DIST = path.resolve(__dirname, 'dist/public');
 
 module.exports = {
   entry: path.resolve(SRC, './index.js'),
