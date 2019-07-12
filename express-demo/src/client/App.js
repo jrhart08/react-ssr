@@ -1,12 +1,32 @@
 import React from 'react';
-import Helmet from 'react-helmet';
-import H1 from './components/H1';
+import {
+  Switch,
+  Route,
+  Redirect,
+  NavLink,
+} from 'react-router-dom';
+import HelloWorld from './pages/HelloWorld';
+import People from './pages/People';
+import Person from './pages/Person';
 
 export default () => (
   <div>
-    <Helmet>
-      <title>Hello World Page</title>
-    </Helmet>
-    <H1>Hello World!</H1>
+    <ul>
+      <li>
+        <NavLink to="/">Home (Redirects to Hello World)</NavLink>
+      </li>
+      <li>
+        <NavLink to="/hello-world">Hello World</NavLink>
+      </li>
+      <li>
+        <NavLink to="/people">People List</NavLink>
+      </li>
+    </ul>
+    <Switch>
+      <Route path="/hello-world" component={HelloWorld} />
+      <Route path="/people" component={People} />
+      <Route path="/people/:id" component={Person} />
+      {true && <Redirect from="/" to="/hello-world" />}
+    </Switch>
   </div>
 );

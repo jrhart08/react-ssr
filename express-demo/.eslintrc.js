@@ -33,6 +33,7 @@ module.exports = {
     'lodash/prefer-includes': 'off',
     'lodash/prefer-lodash-typecheck': 'off',
     'lodash/matches-prop-shorthand': 'off',
+    'lodash/prefer-constant': 'off',
     'no-unused-expressions': [2, { allowShortCircuit: true, allowTernary: true }],
     'no-return-assign': [2, 'except-parens'],
   },

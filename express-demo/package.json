@@ -9,7 +9,8 @@
     "build:client": "cross-env NODE_ENV=development webpack",
     "build:server": "rimraf dist && babel src -d dist",
     "build": "npm-run-all --serial build:server build:client",
-    "start": "node ./dist/server.js"
+    "start": "node ./dist/server.js",
+    "restart": "npm-run-all --serial build start"
   },
   "keywords": [],
   "author": "",
