@@ -5,8 +5,6 @@ const SRC = path.resolve(__dirname, 'src/client');
 const DIST = path.resolve(__dirname, 'dist/server/public');
 
 module.exports = {
-  devtool: 'source-map',
-
   entry: path.resolve(SRC, './index.js'),
 
   output: {
