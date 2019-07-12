@@ -10,8 +10,8 @@
 <body>
 	@Html.React("CommentBox", new
 	{
-		// initialData = Model,
-		initialData = new List<CommentModel>() { },
+		initialData = Model,
+		// initialData = new List<CommentModel>() { },
 		url = Url.Action("Comments"),
 		submitUrl = Url.Action("AddComment"),
 		pollInterval = 2000,
