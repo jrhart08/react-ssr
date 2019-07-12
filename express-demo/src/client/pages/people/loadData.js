@@ -1,5 +1,3 @@
-import fetch from 'isomorphic-unfetch';
+import { getAllPeople } from '../../actions/people';
 
-export default () => fetch('http://localhost:3000/api/people')
-  .then(response => response.json())
-  .then(people => ({ people }));
+export default () => getAllPeople();

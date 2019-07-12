@@ -34,6 +34,8 @@ module.exports = {
     'lodash/prefer-lodash-typecheck': 'off',
     'lodash/matches-prop-shorthand': 'off',
     'lodash/prefer-constant': 'off',
+    'implicit-arrow-linebreak': 'off',
+    'operator-linebreak': 'off',
     'no-unused-expressions': [2, { allowShortCircuit: true, allowTernary: true }],
     'no-return-assign': [2, 'except-parens'],
   },

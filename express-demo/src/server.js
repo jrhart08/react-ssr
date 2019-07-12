@@ -6,6 +6,8 @@ import { getPeople, getPerson } from './server-lib/personData';
 const PORT = 3000;
 const server = express();
 
+global.window = {}; // hack so we can have redux devtools (from configureStore.js)
+
 // public content
 server.use(express.static(__dirname));
 
