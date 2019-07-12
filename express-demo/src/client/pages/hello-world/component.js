@@ -1,6 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import H1 from '../components/H1';
+import H1 from '../../components/H1';
 
 export default () => (
   <div>

@@ -5,9 +5,7 @@ import {
   Redirect,
   NavLink,
 } from 'react-router-dom';
-import HelloWorld from './pages/HelloWorld';
-import People from './pages/People';
-import Person from './pages/Person';
+import routes from './routes';
 
 export default () => (
   <div>
@@ -23,10 +21,10 @@ export default () => (
       </li>
     </ul>
     <Switch>
-      <Route path="/hello-world" component={HelloWorld} />
-      <Route path="/people" component={People} />
-      <Route path="/people/:id" component={Person} />
-      {true && <Redirect from="/" to="/hello-world" />}
+      {
+        routes.map(route => <Route key={route.path} {...route} />)
+      }
+      <Redirect from="/" to="/hello-world" />
     </Switch>
   </div>
 );
