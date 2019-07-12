@@ -62,6 +62,7 @@ export default (req, res) => {
   } catch (err) {
     console.error(err);
   } finally {
+    // garbage collection
     sheet.seal();
   }
 };

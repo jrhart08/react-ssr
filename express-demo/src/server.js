@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import express from 'express';
 import servePage from './_servePage';
-import { getPeople, getPerson } from './api/personData';
+import { getPeople, getPerson } from './server-lib/personData';
 
 const PORT = 3000;
 const server = express();
