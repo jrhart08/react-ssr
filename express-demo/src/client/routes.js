@@ -5,10 +5,12 @@ import helloWorld from './pages/hello-world';
 export default [
   {
     path: '/hello-world',
+    exact: true,
     ...helloWorld,
   },
   {
     path: '/people',
+    exact: true,
     ...people,
   },
   {
