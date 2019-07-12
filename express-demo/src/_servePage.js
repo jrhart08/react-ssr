@@ -4,8 +4,36 @@ import { renderToString } from 'react-dom/server';
 import { ServerStyleSheet } from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { StaticRouter } from 'react-router';
+import path from 'path';
+import fs from 'fs';
 import App from './client/App';
-import buildHtml from './_buildHtml';
+
+function getLatestBundle() {
+  const manifestPath = path.resolve(__dirname, 'public/manifest.json');
+
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+
+  return manifest['main.js'];
+}
+
+function buildHtml({ helmet, styleTags, content }) {
+  return `
+    <html>
+      <head>
+        ${helmet.title.toString()}
+        ${helmet.meta.toString()}
+        ${helmet.link.toString()}
+        ${styleTags}
+      </head>
+      <body>
+        <div id="root">
+          ${content}
+        </div>
+        <script src="${getLatestBundle()}"></script>
+      </body>
+    </html>
+  `;
+}
 
 export default (req, res) => {
   const sheet = new ServerStyleSheet();
