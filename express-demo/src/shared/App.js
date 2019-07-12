@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Switch,
   Route,
   Redirect,
   NavLink,
 } from 'react-router-dom';
-import routes from './routes';
+import defaultRoutes from './routes';
 
-export default () => (
+const App = ({ routes }) => (
   <div>
     <ul>
       <li>
@@ -28,3 +29,17 @@ export default () => (
     </Switch>
   </div>
 );
+
+App.propTypes = {
+  routes: PropTypes.arrayOf(PropTypes.shape({
+    path: PropTypes.string,
+    component: PropTypes.func,
+    loadData: PropTypes.func,
+  })),
+};
+
+App.defaultProps = {
+  routes: defaultRoutes,
+};
+
+export default App;
