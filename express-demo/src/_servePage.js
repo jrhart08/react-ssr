@@ -7,9 +7,9 @@ import { StaticRouter, matchPath } from 'react-router';
 import { Provider } from 'react-redux';
 import path from 'path';
 import fs from 'fs';
-import App from './client/App';
-import routes from './client/routes';
-import configureStore from './client/store/configureStore';
+import App from './shared/App';
+import routes from './shared/routes';
+import configureStore from './shared/store/configureStore';
 
 function getLatestBundle() {
   const manifestPath = path.resolve(__dirname, 'public/manifest.json');
